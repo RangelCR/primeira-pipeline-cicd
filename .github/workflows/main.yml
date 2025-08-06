@@ -1,0 +1,27 @@
+name: Pipeline-CI-CD
+on:
+  push: 
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+    - name: obtendo o código
+      uses: actions/checkout@v4.2.2
+    - name: autenticando no docker hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ vars.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: build da imagem
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: ./src/Dockefile
+        push: true
+        tags: |
+          rangelcr/first-image-pipe:v${{ github.run_number }}
+          rangelcr/first-image-pipe:latest
+    
+    
