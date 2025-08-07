@@ -42,4 +42,3 @@ jobs:
        images: | 
           rangelcr/first-image-pipe:v${{ github.run_number }}
     
-    
