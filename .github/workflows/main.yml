@@ -18,7 +18,7 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         context: ./src
-        file: ./src/Dockefile
+        file: ./src/Dockerfile
         push: true
         tags: |
           rangelcr/first-image-pipe:v${{ github.run_number }}
