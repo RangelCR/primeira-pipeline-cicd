@@ -1,15 +1,15 @@
 name: Deploy
 on:
   workflow_call:
-  inputs:
-    manifests:
-      type: string
-      required: true
-      descriptiom: "Arquivo de manifesto"
-    images:
-      type: string
-      required: true
-      descriptiom: "Imagens docker"
+    inputs:
+      manifests:
+        type: string
+        required: true
+        descriptiom: "Arquivo de manifesto"
+      images:
+        type: string
+        required: true
+        descriptiom: "Imagens docker"
 jobs:
     CD:
     runs-on: ubuntu-latest
@@ -25,4 +25,5 @@ jobs:
       uses: Azure/k8s-deploy@v5
       with:
        manifests: ${{inputs.manifests}}
+
        images: ${{inputs.images}}
