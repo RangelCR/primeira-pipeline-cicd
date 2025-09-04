@@ -9,7 +9,7 @@ import (
 func index(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/plain")
-	fmt.Fprintf(w, "Pantera foi uma influente banda americana de heavy metal formada em 1981 no Texas. CFH")
+	fmt.Fprintf(w, "Pantera foi uma influente banda americana de heavy metal formada em 1981 no Texas. CFH and VULGAR DISPLAY OF POWER")
 }
 
 func main() {
