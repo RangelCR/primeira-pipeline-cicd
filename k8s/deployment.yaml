@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: rangelcr/first-image-pipe
+        image: rangelcr/conversao-temperatura
         ports:
         - containerPort: 5000
 --- 
