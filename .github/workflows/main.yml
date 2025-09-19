@@ -1,7 +1,6 @@
 name: Pipeline-CI-CD
 on:
-  push: 
-    branches: ["main"]
+  push:
   workflow_dispatch:
 jobs:
   CI:
@@ -23,13 +22,23 @@ jobs:
         tags: |
           rangelcr/first-image-pipe:v${{ github.run_number }}
           rangelcr/first-image-pipe:latest
-  CD:
+  CD-HML:
     needs: [CI]
     uses: RangelCR/primeira-pipeline-cicd/.github/workflows/deploy.yaml@main
     with:
       manifests: k8s/deployment.yaml
       images: rangelcr/first-image-pipe:v${{ github.run_number }}
+      enviroment: HML
     secrets: inherit
+  CD-PRD:
+    needs: [CI]
+    uses: RangelCR/primeira-pipeline-cicd/.github/workflows/deploy.yaml@main
+    with:
+      manifests: k8s/deployment.yaml
+      images: rangelcr/first-image-pipe:v${{ github.run_number }}
+      enviroment: PRD
+    secrets: inherit    
+
 
  
 
