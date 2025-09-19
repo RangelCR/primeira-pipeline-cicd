@@ -17,7 +17,7 @@ on:
 jobs:
     CD:
       runs-on: ubuntu-latest
-      environment: ${{inputs.enviroments}}
+      environment: ${{inputs.enviroment}}
       steps:
       - name: obtendo o código
         uses: actions/checkout@v4.2.2    
@@ -32,4 +32,5 @@ jobs:
          manifests: ${{inputs.manifests}}
          images: ${{inputs.images}}
          namespace: ${{vars.APP_NAMESPACE}}
+
 
